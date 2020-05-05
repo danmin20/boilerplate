@@ -3,6 +3,7 @@ const app = express();
 const port = 5000;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const config = require("./config/key");
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,15 +13,12 @@ app.use(bodyParser.json());
 const { User } = require("./models/User");
 
 mongoose
-  .connect(
-    "mongodb+srv://danmin:1108@cluster0-ofdek.mongodb.net/test?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }
-  )
+  .connect(config.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
