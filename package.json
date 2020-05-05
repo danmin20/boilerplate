@@ -1,0 +1,12 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/danmin20/boilerplate.git",
+  "author": "leejeongmin <danmin20@khu.ac.kr>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.12"
+  }
+}
