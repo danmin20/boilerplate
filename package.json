@@ -6,7 +6,9 @@
   "author": "leejeongmin <danmin20@khu.ac.kr>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "client": "yarn --cwd client start",
+    "dev": "concurrently \"yarn start\" \"yarn client\""
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -17,6 +19,7 @@
     "mongoose": "^5.9.12"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.3"
   }
 }
