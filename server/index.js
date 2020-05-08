@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
-const auth = require("./middleware/auth");
+const { auth } = require("./middleware/auth");
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +24,8 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
+
+app.get("/api/hello", (req, res) => res.send("hi"));
 
 app.get("/", (req, res) => res.send("hello world"));
 app.post("/api/user/register", (req, res) => {

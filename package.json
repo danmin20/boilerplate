@@ -6,7 +6,7 @@
   "author": "leejeongmin <danmin20@khu.ac.kr>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
