@@ -1,10 +1,22 @@
 import React, { useState } from "react";
-import Axios from "axios";
 import { useDispatch } from "react-redux";
+import { Form, Input, Button, Checkbox, Typography } from "antd";
+import Icon from "@ant-design/icons";
 import { loginUser } from "../../../_actions/user_action";
+
+const { Title } = Typography;
 
 function LoginPage(props) {
   const dispatch = useDispatch();
+  const rememberChecked = localStorage.getItem("remember") ? true : false;
+  const initialEmail = localStorage.getItem("remember")
+    ? localStorage.getItem("remember")
+    : "";
+
+  const [Remember, setRemember] = useState(rememberChecked);
+  const handleRemember = () => {
+    setRemember(!Remember);
+  };
 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -23,7 +35,7 @@ function LoginPage(props) {
       password: Password,
     };
     dispatch(loginUser(body)).then((response) => {
-      console.log(response.payload)
+      console.log(response.payload);
       if (response.payload.loginSuccess) {
         props.history.push("/");
       }
@@ -31,25 +43,55 @@ function LoginPage(props) {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={onSubmitHandler}
-      >
-        <label>Email</label>
-        <input type="email" value={Email} onChange={onEmailHandler} />
-        <label>Password</label>
-        <input type="password" value={Password} onChange={onPasswordHandler} />
-        <br />
-        <button>Login</button>
+    <div className="app">
+      <Title level={2} style={{ fontWeight: "100" }}>
+        Log In
+      </Title>
+      <form style={{ width: "350px" }} onSubmit={onSubmitHandler}>
+        <Form.Item required>
+          <Input
+            id="email"
+            prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+            placeholder="Enter your email"
+            type="email"
+            value={Email}
+            onChange={onEmailHandler}
+          />
+        </Form.Item>
+        <Form.Item required>
+          <Input
+            id="password"
+            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+            placeholder="Enter your password"
+            type="password"
+            value={Password}
+            onChange={onPasswordHandler}
+          />
+        </Form.Item>
+        <Form.Item>
+          <Checkbox id="remember" onChange={handleRemember} checked={Remember}>
+            Remember me
+          </Checkbox>
+          <a
+            className="login-form-forgot"
+            href="/reset_user"
+            style={{ float: "right" }}
+          >
+            forgot password
+          </a>
+          <div>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+              style={{ minWidth: "100%" }}
+              onSubmit={onSubmitHandler}
+            >
+              Log in
+            </Button>
+          </div>
+          Or <a href="/register">register now!</a>
+        </Form.Item>
       </form>
     </div>
   );
