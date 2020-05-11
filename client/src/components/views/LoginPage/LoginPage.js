@@ -18,7 +18,7 @@ function LoginPage(props) {
     setRemember(!Remember);
   };
 
-  const [Email, setEmail] = useState("");
+  const [Email, setEmail] = useState(initialEmail);
   const [Password, setPassword] = useState("");
   const onEmailHandler = (e) => {
     setEmail(e.currentTarget.value);
