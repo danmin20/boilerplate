@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../_actions/user_action";
+import { Form, Input, Button, Typography } from "antd";
+import Icon from "@ant-design/icons";
+
+const { Title } = Typography;
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -43,29 +47,62 @@ function RegisterPage(props) {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <form
-        style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={onSubmitHandler}
-      >
-        <label>Email</label>
-        <input type="email" value={Email} onChange={onEmailHandler} />
-        <label>Name</label>
-        <input type="text" value={Name} onChange={onNameHandler} />
-        <label>Password</label>
-        <input type="password" value={Password} onChange={onPasswordHandler} />
-        <label>Comfirm Password</label>
-        <input type="password" value={Confirm} onChange={onConfirmHandler} />
-        <br />
-        <button>Login</button>
+    <div className="app">
+      <Title level={2} style={{ fontWeight: "100" }}>
+        Sign In
+      </Title>
+      <form style={{ width: "350px" }} onSubmit={onSubmitHandler}>
+        <Form.Item required>
+          <Input
+            id="email"
+            prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+            placeholder="Enter your email"
+            type="email"
+            value={Email}
+            onChange={onEmailHandler}
+          />
+        </Form.Item>
+        <Form.Item required>
+          <Input
+            id="name"
+            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+            placeholder="Enter your name"
+            type="name"
+            value={Name}
+            onChange={onNameHandler}
+          />
+        </Form.Item>
+        <Form.Item required>
+          <Input
+            id="password"
+            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+            placeholder="Enter your password"
+            type="password"
+            value={Password}
+            onChange={onPasswordHandler}
+          />
+        </Form.Item>
+        <Form.Item required>
+          <Input
+            id="confirm"
+            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+            placeholder="Enter your password"
+            type="confirm"
+            value={Confirm}
+            onChange={onConfirmHandler}
+          />
+        </Form.Item>
+        <div>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            style={{ minWidth: "100%" }}
+            onSubmit={onSubmitHandler}
+          >
+            Sign in
+          </Button>
+        </div>
       </form>
     </div>
   );
