@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import Icon from "@ant-design/icons";
 import { loginUser } from "../../../_actions/user_action";
@@ -97,4 +98,4 @@ function LoginPage(props) {
   );
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

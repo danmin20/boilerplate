@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../_actions/user_action";
 import { Form, Input, Button, Typography } from "antd";
@@ -49,7 +50,7 @@ function RegisterPage(props) {
   return (
     <div className="app">
       <Title level={2} style={{ fontWeight: "100" }}>
-        Sign In
+        Sign Up
       </Title>
       <form style={{ width: "350px" }} onSubmit={onSubmitHandler}>
         <Form.Item required>
@@ -100,7 +101,7 @@ function RegisterPage(props) {
             style={{ minWidth: "100%" }}
             onSubmit={onSubmitHandler}
           >
-            Sign in
+            Sign Up
           </Button>
         </div>
       </form>
@@ -108,4 +109,4 @@ function RegisterPage(props) {
   );
 }
 
-export default RegisterPage;
+export default withRouter(RegisterPage);
