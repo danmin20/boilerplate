@@ -5,6 +5,7 @@ import LoginPage from "./views/LoginPage/LoginPage";
 import RegisterPage from "./views/RegisterPage/RegisterPage";
 import Footer from "./views/Footer/Footer";
 import NavBar from "./views/NavBar/NavBar";
+import Auth from "../hoc/auth";
 
 function App() {
   return (
@@ -12,9 +13,9 @@ function App() {
       <NavBar />
       <div>
         <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
+          <Route exact path="/" component={Auth(LandingPage, null, true)} />
+          <Route path="/login" component={Auth(LoginPage, false)} />
+          <Route path="/register" component={Auth(RegisterPage, false)} />
         </Switch>
       </div>
       <Footer />
