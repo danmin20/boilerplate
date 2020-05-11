@@ -6,7 +6,7 @@ export function loginUser(data) {
     (response) => response.data
   );
   return {
-    type: "LOGIN_USER",
+    type: LOGIN_USER,
     payload: request,
   };
 }
@@ -16,7 +16,7 @@ export function registerUser(data) {
     (response) => response.data
   );
   return {
-    type: "REGISTER_USER",
+    type: REGISTER_USER,
     payload: request,
   };
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
@@ -9,6 +8,7 @@ import ReduxPromise from "redux-promise";
 import ReduxThunk from "redux-thunk";
 import Reducer from "./_reducers";
 import "antd/dist/antd.css";
+import App from "./components/App";
 
 const createStoreWithMiddleware = applyMiddleware(
   ReduxPromise,

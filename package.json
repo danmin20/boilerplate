@@ -11,6 +11,7 @@
     "dev": "concurrently \"yarn start\" \"yarn client\""
   },
   "dependencies": {
+    "@ant-design/icons": "^4.1.0",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
